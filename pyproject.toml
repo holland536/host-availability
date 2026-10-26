@@ -1,6 +1,6 @@
 [project]
 name = "host-availability"
-version = "0.1.0"
+version = "0.1.1"
 description = "Checks which host-port pairs are reachable, unreachable, or timed out"
 requires-python = ">=3.10"
 dependencies = []
