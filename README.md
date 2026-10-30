@@ -20,3 +20,10 @@ This exists because the three outcomes a probe actually produces — reachable, 
 ## Edge cases
 
 Port 0 is rejected up front as `UNREACHABLE` with `detail="invalid port"` rather than passed to the socket layer, where its meaning varies by platform. A timeout value of zero or negative raises `ValueError` at construction. Probes are sequential; if you need concurrency, wrap the calls yourself.
+
+## Design notes
+
+The window stores values eagerly rather than keeping running aggregates. Running
+sums drift with floating point over long streams, and recomputing from a small
+buffer is cheap enough that the drift is not worth the speed.
+
